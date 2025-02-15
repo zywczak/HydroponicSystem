@@ -54,7 +54,7 @@ REST_FRAMEWORK = {
 }
 
 ## custom user model
-AUTH_USER_MODEL = 'HydroponicSystem_authentication.User'
+AUTH_USER_MODEL = 'HydroponicSystem_Authentication.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
