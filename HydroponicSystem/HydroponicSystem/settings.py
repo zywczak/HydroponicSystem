@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'HydroponicSystem_authentication',
+    'HydroponicSystem_systems',
 ]
 
 REST_FRAMEWORK = {
