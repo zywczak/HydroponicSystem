@@ -3,6 +3,8 @@ from rest_framework.views import APIView
 from rest_framework.permissions import AllowAny
 from rest_framework import status
 from .serializers import UserRegisterSerializer
+from django.contrib.auth import authenticate
+from .authentication import JWTAuthentication
 
 class RegisterUserAPIView(APIView):
     serializer_class = UserRegisterSerializer
@@ -16,3 +18,22 @@ class RegisterUserAPIView(APIView):
                 return Response({'message': 'User created successfully'}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+class UserLoginAPIView(APIView):
+	permission_classes = [AllowAny]
+
+	def post(self, request):
+		email = request.data.get('email', None)
+		user_password = request.data.get('password', None)
+  
+		if not user_password:
+			return Response({"error": "User password is required."}, status=status.HTTP_400_BAD_REQUEST)
+
+		if not email:
+			return Response({"error": "User email is required."}, status=status.HTTP_400_BAD_REQUEST)
+
+		user_instance = authenticate(username=email, password=user_password)
+		if not user_instance:
+			return Response({"error": "Invalid email or password."}, status=status.HTTP_401_UNAUTHORIZED)
+
+		access_token = JWTAuthentication.create_jwt(user_instance)
+		return Response({'token': access_token}, status=status.HTTP_200_OK)

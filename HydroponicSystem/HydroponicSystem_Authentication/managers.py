@@ -3,10 +3,10 @@ from django.contrib.auth.base_user import BaseUserManager
 class CustomUserManager(BaseUserManager):
 	def create_user(self, email, password=None):
 		if not email:
-			raise ValueError('A user email is needed.')
+			raise ValueError('User email is needed.')
 
 		if not password:
-			raise ValueError('A user password is needed.')
+			raise ValueError('User password is needed.')
 
 		email = self.normalize_email(email)
 		user = self.model(email=email)
@@ -16,10 +16,10 @@ class CustomUserManager(BaseUserManager):
 
 	def create_superuser(self, email, password=None):
 		if not email:
-			raise ValueError('A user email is needed.')
+			raise ValueError('User email is needed.')
 
 		if not password:
-			raise ValueError('A user password is needed.')
+			raise ValueError('User password is needed.')
 
 		user = self.create_user(email, password)
 		user.is_superuser = True

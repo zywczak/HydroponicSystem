@@ -43,6 +43,19 @@ INSTALLED_APPS = [
     'HydroponicSystem_Authentication',
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'HydroponicSystem_Authentication.authentication.JWTAuthentication',
+    ),
+}
+
+## custom user model
+AUTH_USER_MODEL = 'HydroponicSystem_authentication.User'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -72,9 +85,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'HydroponicSystem.wsgi.application'
-
-## custom user model
-AUTH_USER_MODEL = 'HydroponicSystem_authentication.User'
 
 
 # Database
