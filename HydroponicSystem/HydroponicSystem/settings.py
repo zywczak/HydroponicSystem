@@ -73,6 +73,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'HydroponicSystem.wsgi.application'
 
+## custom user model
+AUTH_USER_MODEL = 'HydroponicSystem_authentication.User'
+
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
