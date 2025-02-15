@@ -8,7 +8,7 @@ from .authentication import JWTAuthentication
 
 class RegisterUserAPIView(APIView):
     serializer_class = UserRegisterSerializer
-    permission_classes = (AllowAny,)
+    permission_classes = [AllowAny]
 
     def post(self, request):
         serializer = self.serializer_class(data=request.data)
@@ -33,7 +33,7 @@ class UserLoginAPIView(APIView):
 
 		user_instance = authenticate(username=email, password=user_password)
 		if not user_instance:
-			return Response({"error": "Invalid email or password."}, status=status.HTTP_401_UNAUTHORIZED)
+			return Response({"error": "User not found"}, status=status.HTTP_401_UNAUTHORIZED)
 
 		access_token = JWTAuthentication.create_jwt(user_instance)
 		return Response({'token': access_token}, status=status.HTTP_200_OK)

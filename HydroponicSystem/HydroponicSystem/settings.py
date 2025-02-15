@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'HydroponicSystem_Authentication',
+    'HydroponicSystem_authentication',
 ]
 
 REST_FRAMEWORK = {
@@ -49,12 +49,12 @@ REST_FRAMEWORK = {
     ),
 
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'HydroponicSystem_Authentication.authentication.JWTAuthentication',
+        'HydroponicSystem_authentication.authentication.JWTAuthentication',
     ),
 }
 
 ## custom user model
-AUTH_USER_MODEL = 'HydroponicSystem_Authentication.User'
+AUTH_USER_MODEL = 'HydroponicSystem_authentication.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
