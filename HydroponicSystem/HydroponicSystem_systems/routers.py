@@ -4,4 +4,4 @@ from .system_view import HydroponicSystemViewSet
 
 router = DefaultRouter()
 
-router.register(r'systems', HydroponicSystemViewSet, basename='hydroponic-system')
+router.register(r'systems', HydroponicSystemViewSet, basename='hydroponicsystem')

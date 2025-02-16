@@ -8,6 +8,9 @@ from django.db.models import Q
 
 class HydroponicSystemViewSet(viewsets.ModelViewSet):
     serializer_class = HydroponicSystemSerializer
+    
+    def get_queryset(self):
+        return HydroponicSystem.objects.filter(owner=self.request.user)
 
     http_method_names = ['get', 'post', 'put', 'delete']
 
