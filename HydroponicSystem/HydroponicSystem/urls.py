@@ -17,8 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from HydroponicSystem_authentication import urls as authentication_urls
+from HydroponicSystem_systems.routers import router as systems_routers
+from HydroponicSystem_systems import urls as systems_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include( authentication_urls)),
+    path('', include( systems_routers.urls)),
+    path('', include( systems_urls)),
 ]
