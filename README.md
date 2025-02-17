@@ -45,3 +45,11 @@ A CRUD application in Django that enables management hydroponic system
     ```bash
     docker exec -it hydroponicsystem-backend-1 pytest
     ```
+
+## Address API:
+ [http://localhost:8000/](http://localhost:8000)
+
+ ## Dokumentation:
+ [http://localhost:8000/api/schema/swagger-ui/](http://localhost:8000/api/schema/swagger-ui)
+
+ and in code

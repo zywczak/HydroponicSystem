@@ -16,12 +16,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+
+from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
+
 from HydroponicSystem_authentication import urls as authentication_urls
 from HydroponicSystem_systems.routers import router as systems_routers
 from HydroponicSystem_systems import urls as systems_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
+    path('api/schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+    path('api/schema/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
     path('', include( authentication_urls)),
     path('', include( systems_routers.urls)),
     path('', include( systems_urls)),
